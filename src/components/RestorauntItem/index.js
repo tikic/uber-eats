@@ -3,7 +3,6 @@ import React from 'react'
 import { AntDesign } from '@expo/vector-icons'; 
 
 const RestorauntItem = ({restaurant}) => {
-
     const {
       name, 
       image, 

@@ -6,7 +6,7 @@ import restaurants from '../../../assets/data/restaurants.json'
 
 const HomeScreen = () => {
   return (
-    <View style={{paddingTop: 40}}>
+    <View style={{padding: 10}}>
         <FlatList
             data={restaurants}
             renderItem={({ item }) => <RestaurantItem restaurant={item} />}
