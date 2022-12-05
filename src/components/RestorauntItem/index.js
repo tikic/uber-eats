@@ -1,8 +1,12 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React from 'react'
 import { AntDesign } from '@expo/vector-icons'; 
+import {useNavigation} from '@react-navigation/native'
 
 const RestorauntItem = ({restaurant}) => {
+
+  const navigation = useNavigation();
+
     const {
       name, 
       image, 
@@ -11,8 +15,12 @@ const RestorauntItem = ({restaurant}) => {
       rating,
       maxDeliveryTime} = restaurant;
 
+     const onPress = () => {
+      navigation.navigate('Restaurant', {id: restaurant.id})
+     } 
+
     return (
-        <View style={styles.restorauntContainer}>
+        <Pressable style={styles.restorauntContainer} onPress={onPress}>
 
           <View style={styles.imageCOntainer}>
             <Image style={styles.image} source={{uri: image}}/>
@@ -31,7 +39,7 @@ const RestorauntItem = ({restaurant}) => {
                 <Text>{rating}</Text>
                 </View> 
            </View>
-         </View>
+         </Pressable>
       )
 }
 

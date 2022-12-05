@@ -1,9 +1,13 @@
-import { StyleSheet, Text, View, Image } from 'react-native'
+import { StyleSheet, Text, View, Image, Pressable } from 'react-native'
 import React from 'react'
+import {useNavigation} from '@react-navigation/native'
 
 const DishListItem = ({dish}) => {
+    const navigation = useNavigation()
   return (
-    <View style={styles.container}>
+    <Pressable style={styles.container} onPress={() => {
+        navigation.navigate('Dish')
+    }}>
         <View style={{flex: 1}}>
             <Text style={styles.name}>{dish.name}</Text>
             <Text style={styles.description} numberOfLines={2}>{dish.description}</Text>
@@ -13,7 +17,7 @@ const DishListItem = ({dish}) => {
         {dish.image && 
             <Image source={{uri: dish.image}} style={styles.dishImage}/>
         }
-    </View>
+    </Pressable>
   )
 }
 

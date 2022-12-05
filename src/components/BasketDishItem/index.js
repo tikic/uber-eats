@@ -14,7 +14,6 @@ const BasketDishItem = ({basketDish}) => {
 export default BasketDishItem
 
 const styles = StyleSheet.create({
-   
       name: {
         fontSize: 24,
         fontWeight: "600",

@@ -1,12 +1,15 @@
-import { StyleSheet, Text, View, FlatList } from 'react-native'
+import { StyleSheet, Text, View, FlatList, Pressable } from 'react-native'
 import React, { useState } from 'react'
 import { AntDesign } from "@expo/vector-icons";
 import restaurants from '../../../assets/data/restaurants.json'
-import BasketDishItem from '../../components/BasketDishItem'
+import BasketDishItem from '../../components/BasketDishItem';
+import {useNavigation} from '@react-navigation/native'
 
 const restaurant = restaurants[0];
 
 const Basket = () => {
+  const navigation = useNavigation();
+  
   return (
     <View style={styles.page}>
       <Text style={styles.name}>{restaurant.name}</Text>
@@ -21,9 +24,9 @@ const Basket = () => {
 
       <View style={styles.separator}/>
 
-      <View style={styles.button}>
+      <Pressable style={styles.button} onPress={() => console.log('create order')}>
         <Text style={styles.buttonText}>Create order</Text>
-      </View>
+      </Pressable>
 
     </View>
   )

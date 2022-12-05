@@ -1,36 +1,16 @@
 import { StatusBar } from 'expo-status-bar';
-import { StyleSheet, View } from 'react-native';
-import DushDetailsScreen from './src/screens/DushDetailsScreen';
-import HomeScreen from './src/screens/HomeScreen';
-import RestaurantDetailsScreen from './src/screens/RestaurantDetailsScreen';
-import Basket from './src/screens/Basket';
-import OrderScreen from './src/screens/OrdersScreen';
-import OrderDetails from './src/screens/OrderDetails';
-
-
+import { SafeAreaView} from 'react-native';
+import {NavigationContainer} from '@react-navigation/native';
+import RootNavigator from './src/navigation';
 
 
 export default function App() {
   return (
-    <View style={styles.container}>
-      {/* <HomeScreen/> */}
-      {/* <RestaurantDetailsScreen /> */}
-      {/* <DushDetailsScreen /> */}
-      {/* <Basket/>
-       */}
-       {/* <OrderScreen />
-        */}
-
-        <OrderDetails />
-      <StatusBar style="light" />
-
-    </View>
+    <NavigationContainer>
+          <RootNavigator />
+          <StatusBar style="light" />
+    </NavigationContainer>
+ 
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-  },
-});
