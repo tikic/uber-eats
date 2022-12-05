@@ -4,6 +4,7 @@ import DushDetailsScreen from './src/screens/DushDetailsScreen';
 import HomeScreen from './src/screens/HomeScreen';
 import RestaurantDetailsScreen from './src/screens/RestaurantDetailsScreen';
 import Basket from './src/screens/Basket';
+import OrderScreen from './src/screens/OrdersScreen';
 
 
 
@@ -14,7 +15,9 @@ export default function App() {
       {/* <HomeScreen/> */}
       {/* <RestaurantDetailsScreen /> */}
       {/* <DushDetailsScreen /> */}
-      <Basket/>
+      {/* <Basket/>
+       */}
+       <OrderScreen />
       <StatusBar style="light" />
 
     </View>
