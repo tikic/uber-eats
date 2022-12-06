@@ -10,6 +10,7 @@ import Basket from '../screens/Basket';
 import HomeScreen from '../screens/HomeScreen'
 import OrderScreen from '../screens/OrdersScreen';
 import OrderDetails from '../screens/OrderDetails';
+import Profile from '../screens/ProfileScreen';
 
 const Tab = createBottomTabNavigator();
 
@@ -39,7 +40,7 @@ const HomeTabs = () => {
       />
       <Tab.Screen
         name="Profile"
-        component={OrderDetails}
+        component={Profile}
         options={{
           tabBarIcon: ({ color }) => (
             <FontAwesome5 name="user-alt" size={24} color={color} />

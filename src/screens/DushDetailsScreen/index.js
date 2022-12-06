@@ -1,14 +1,27 @@
-import { Pressable, StyleSheet, Text, View } from 'react-native'
-import React, { useState } from 'react'
+import { Pressable, StyleSheet, Text, View, ActivityIndicator } from 'react-native'
+import React, { useState, useEffect } from 'react'
 import { AntDesign } from "@expo/vector-icons";
 import restaurants from '../../../assets/data/restaurants.json';
-import {useNavigation} from '@react-navigation/native'
-
-const dish = restaurants[0].dishes[2];
+import {useNavigation, useRoute} from '@react-navigation/native'
+import { DataStore } from 'aws-amplify';
+import {Dish} from '../../models'
+ 
 
 const DushDetailsScreen = () => {
-  const navigation = useNavigation();
-   const [quantity, setQuantity] = useState(1) 
+    const navigation = useNavigation();
+    const route = useRoute();
+    const [dish, setDish] = useState(null)
+
+   const [quantity, setQuantity] = useState(1);
+
+   const id = route.params?.id
+
+   useEffect(() => {
+    if(id){
+      DataStore.query(Dish, id).then(setDish)
+    }
+   },[id])
+
 
    const onMinus = () => {
     if (quantity > 1) {
@@ -23,6 +36,15 @@ const DushDetailsScreen = () => {
   const getTotal = () => {
     return (dish.price * quantity).toFixed(2)
   }
+
+  if(!dish){
+    return(
+    <View style={{flex: 1, alignItems: 'center', justifyContent: 'center'}}>
+    <ActivityIndicator size='large' color='gray'/>  
+    </View>)
+  }
+
+
 
   return (
     <View style={styles.page}>

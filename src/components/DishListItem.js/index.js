@@ -6,7 +6,7 @@ const DishListItem = ({dish}) => {
     const navigation = useNavigation()
   return (
     <Pressable style={styles.container} onPress={() => {
-        navigation.navigate('Dish')
+        navigation.navigate('Dish', {id: dish.id})
     }}>
         <View style={{flex: 1}}>
             <Text style={styles.name}>{dish.name}</Text>

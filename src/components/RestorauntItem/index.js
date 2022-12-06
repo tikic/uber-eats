@@ -3,6 +3,8 @@ import React from 'react'
 import { AntDesign } from '@expo/vector-icons'; 
 import {useNavigation} from '@react-navigation/native'
 
+const DEFAULT_IMAGE = 'https://notjustdev-dummy.s3.us-east-2.amazonaws.com/uber-eats/restaurant3.jpeg'
+
 const RestorauntItem = ({restaurant}) => {
 
   const navigation = useNavigation();
@@ -23,7 +25,7 @@ const RestorauntItem = ({restaurant}) => {
         <Pressable style={styles.restorauntContainer} onPress={onPress}>
 
           <View style={styles.imageCOntainer}>
-            <Image style={styles.image} source={{uri: image}}/>
+            <Image style={styles.image} source={{uri: image?.startsWith('http') ? image: DEFAULT_IMAGE}}/>
             <AntDesign name="hearto" size={24} color="white" style={styles.icon}/>
           </View>
     
@@ -31,12 +33,12 @@ const RestorauntItem = ({restaurant}) => {
            <View style={{flexDirection: 'row', justifyContent: 'space-between'}}>
               <View>
                   <Text style={styles.title}>{name}</Text>
-                  <Text style={styles.subtitle}>${deliveryFee} &#8226; {minDeliveryTime} - {maxDeliveryTime} minutes</Text>
+                  <Text style={styles.subtitle}>${(deliveryFee).toFixed(1)} &#8226; {minDeliveryTime} - {maxDeliveryTime} minutes</Text>
               </View>
           
 
               <View style={styles.rating}>
-                <Text>{rating}</Text>
+                <Text>{rating.toFixed(1)}</Text>
                 </View> 
            </View>
          </Pressable>
